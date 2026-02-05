@@ -1,0 +1,52 @@
+import java.util.Scanner;
+class Node {
+    int data;
+    Node prev;
+    Node next;
+   Node(int data) {
+        this.data = data;
+        this.prev = null;
+        this.next = null;
+    }
+}
+public class Main {
+static boolean isPalindrome(Node head) {
+        if (head == null)
+            return true;
+        Node tail = head;
+        while (tail.next != null) {
+            tail = tail.next;
+        }
+     Node left = head;
+        Node right = tail;
+        while (left != right && left.prev != right) {
+            if (left.data != right.data)
+                return false;
+        left = left.next;
+            right = right.prev;
+        }
+        return true;
+    }
+  public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+      int n = sc.nextInt();
+      Node head = null;
+        Node tail = null;
+        for (int i = 0; i < n; i++) {
+            int val = sc.nextInt();
+            Node newNode = new Node(val);
+     if (head == null) {
+                head = newNode;
+                tail = newNode;
+            } else {
+                tail.next = newNode;
+                newNode.prev = tail;
+                tail = newNode;
+            }
+        }
+     if (isPalindrome(head))
+            System.out.println("Palindrome");
+        else
+            System.out.println("Not Palindrome");
+    }
+}
