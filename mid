@@ -20,9 +20,10 @@ public class Main{
             Node newNode=new Node(value);
             if(head==null){
                 head=newNode;
-                tail=head;
+                tail=newNode;
             }else{
                 tail.next=newNode;
+                newNode.prev = tail;
                 tail=newNode;
             }
         }
@@ -35,10 +36,11 @@ public class Main{
         }
         midNode.next=temp.next;
         midNode.prev=temp;
-        if(temp.prev!=null){
+        if(temp.next!=null){
             temp.next.prev=midNode;
         }
         temp.next=midNode;
+        temp=head;
         while(temp!=null){
             System.out.print(temp.data+" ");
             temp=temp.next;
