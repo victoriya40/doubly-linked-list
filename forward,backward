@@ -1,0 +1,72 @@
+import java.util.Scanner;
+class Node{
+    Node prev;
+    int data;
+    Node next;
+    Node(int val){
+        prev=null;
+        data=val;
+        next=null;
+    }
+}
+class LinkedList{
+    Node head;
+    LinkedList(){
+        head=null;
+    }
+    void insert(int val){
+        Node newNode=new Node(val);
+        if(head==null){
+            head=newNode;
+        }else{
+            Node temp=head;
+            while(temp.next!=null){
+                temp=temp.next;
+            }
+            temp.next=newNode;
+            newNode.prev=temp;
+        }
+    }
+    void displayforward(){
+        if(head==null){
+            System.out.println("linked list is empty");
+            return ;
+        }
+        Node temp=head;
+        while(temp!=null){
+            System.out.print(temp.data+"");
+            temp=temp.next;
+        }
+        System.out.println();
+    }
+    void displaybackward(){
+        if(head==null){
+            System.out.println("linked list is empty");
+            return;
+        }
+        Node temp=head;
+        while(temp.next!=null){
+            temp=temp.next;
+        }
+        while(temp!=null){
+            System.out.print(temp.data +" ");
+            temp=temp.prev;
+        }
+        System.out.println();
+    }
+}
+public class Main{
+public static void main(String[]args){
+    Scanner sc=new Scanner(System.in);
+    LinkedList ll=new LinkedList();
+    int val;
+    do{
+        val=sc.nextInt();
+        if(val!=-1){
+            ll.insert(val);
+        }
+        }while(val!=-1);
+        ll.displayforward();
+        ll.displaybackward();
+    }
+}
