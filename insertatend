@@ -1,62 +1,76 @@
 import java.util.Scanner;
-class Node {
+
+class Node{
     int data;
     Node next;
     Node prev;
-    Node(int data) {
+
+    Node(int data){
         this.data = data;
         this.next = null;
         this.prev = null;
     }
 }
-class DoublyLinkedList {
+
+class DoublyLinkedList{
+
     Node head;
-       void insertEnd(int data) {
+
+    void insertAtEnd(int data){
+
         Node newNode = new Node(data);
-        if (head == null) {
+
+        // empty list
+        if(head == null){
             head = newNode;
             return;
         }
+
         Node temp = head;
-        while (temp.next != null) {
+
+        // last node ku po
+        while(temp.next != null){
             temp = temp.next;
         }
+
+        // connection
         temp.next = newNode;
         newNode.prev = temp;
     }
-    void insertAtBeg(int data) {
-        Node newNode = new Node(data);
-   if (head == null) {
-            head = newNode;
-            return;
-        }
-         newNode.next = head;
-        head.prev = newNode;
-        head = newNode;
-     }
-    void display() {
-        if (head == null) {
-            System.out.println("List is empty");
-            return;
-        }
-  Node temp = head;
-        while (temp != null) {
-            System.out.print(temp.data+" ");
+
+    void display(){
+
+        Node temp = head;
+
+        while(temp != null){
+            System.out.print(temp.data + " ");
             temp = temp.next;
         }
-        System.out.println();
     }
 }
-public class Main {
-    public static void main(String[] args) {
+
+public class Main{
+
+    public static void main(String[] args){
+
         Scanner sc = new Scanner(System.in);
-        DoublyLinkedList dll = new DoublyLinkedList();
+
+        DoublyLinkedList list = new DoublyLinkedList();
+
+        
         int n = sc.nextInt();
-        for (int i = 0; i < n; i++) {
-          dll.insertEnd(sc.nextInt());
+
+        for(int i = 1; i <= n; i++){
+
+           
+            int data = sc.nextInt();
+
+            list.insertAtEnd(data);
         }
         int x = sc.nextInt();
-        dll.insertEnd(x);
-        dll.display();
+list.insertAtEnd(x);
+        
+
+        list.display();
     }
 }
