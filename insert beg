@@ -54,19 +54,18 @@ public class Main{
 
         DoublyLinkedList list = new DoublyLinkedList();
 
-        System.out.print("How many nodes: ");
+
         int n = sc.nextInt();
 
         for(int i = 1; i <= n; i++){
 
-            System.out.print("Enter data: ");
             int data = sc.nextInt();
 
             list.insertAtBeginning(data);
         }
-
-        System.out.println("Doubly Linked List:");
-
+int x = sc.nextInt();
+        
+list. insertAtBeginning(x);
         list.display();
     }
 }
